@@ -174,4 +174,8 @@ void workaroundShutdownCrash(void* handle) {
     patchCallInstruction((void*) patchOff, (void*) &workerPoolDestroy, true);
     patchOff = (unsigned int) hybris_dlsym(handle, "_ZN9SchedulerD2Ev");
     patchCallInstruction((void*) patchOff, (void*) &workerPoolDestroy, true);
+    patchOff = (unsigned int) hybris_dlsym(handle, "_ZN9SchedulerD2Ev");
+    patchCallInstruction((void*) patchOff, (void*) &workerPoolDestroy, true);
+    patchOff = (unsigned int)dlsym(handle, "_ZN9TaskGroup5flushEv");
+    patchCallInstruction((void *)patchOff, (void *)&workerPoolDestroy, true);
 }
